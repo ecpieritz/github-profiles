@@ -34,4 +34,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@media(max-width: 996px){
+  .gp-repos{
+    padding: 0 40px;
+  }
+}
 </style>

@@ -33,4 +33,10 @@ export default {
     }
   }
 }
+
+@media(max-width: 540px) {
+  .gp-search{
+    width: 100%;
+  }
+}
 </style>

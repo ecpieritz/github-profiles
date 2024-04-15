@@ -89,4 +89,21 @@ export default {
     }
   }
 }
+@media(max-width: 540px) {
+  .dp-git{
+    &__nav{
+      &__item {
+        width: 50%;
+        &__link {
+          padding: 10px auto;
+
+          span {
+            width: auto;
+            padding: 3px 7px;
+          }
+        }
+      }
+    }
+  }
+}
 </style>
