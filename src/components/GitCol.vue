@@ -55,7 +55,8 @@ export default {
 <style scoped lang="scss">
 .dp-git {
   &__nav {
-    border-bottom: 1px solid #e1e4e8;
+    border-bottom: 1px solid #999999;
+    margin-bottom: 40px;
 
     &__item {
       &__link {
@@ -71,6 +72,7 @@ export default {
         &.active {
           border-bottom: 5px solid #e36209;
           font-weight: 700;
+          margin-bottom: .5px;
         }
 
         span {

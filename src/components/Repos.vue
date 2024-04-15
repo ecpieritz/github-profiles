@@ -1,13 +1,16 @@
 <template>
   <div>
+    <Search />
     Repos
   </div>
 </template>
 
 <script>
+import Search from './Search.vue'
 export default {
   name: 'ReposComp',
-  props: {
+  components: {
+    Search
   }
 }
 </script>

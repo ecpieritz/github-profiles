@@ -1,13 +1,16 @@
 <template>
   <div>
+    <Search />
     Starred
   </div>
 </template>
 
 <script>
+import Search from './Search.vue'
 export default {
   name: 'StarredComp',
-  props: {
+  components: {
+    Search
   }
 }
 </script>
