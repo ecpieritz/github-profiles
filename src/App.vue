@@ -1,14 +1,23 @@
 <template>
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="row">
+    <div class="col-3">
+
+      <PersonCol />
+    </div>
+    <div class="col-9">
+      
+      Teste
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PersonCol from './components/PersonCol.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    PersonCol
   }
 }
 </script>
