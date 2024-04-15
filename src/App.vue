@@ -7,8 +7,7 @@
         <PersonCol />
       </div>
       <div class="col-9">
-        
-        Teste
+        <GitCol />
       </div>
     </div>
   </main>
@@ -17,15 +16,18 @@
 <script>
 import PersonCol from './components/PersonCol.vue'
 import Header from './components/Header.vue'
+import GitCol from './components/GitCol.vue'
 
 export default {
   name: 'App',
   components: {
     PersonCol,
-    Header
+    Header,
+    GitCol
   }
 }
 </script>
 
 <style lang="scss">
+@import url('./assets/scss/index.scss');
 </style>
