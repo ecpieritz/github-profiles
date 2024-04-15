@@ -30,4 +30,8 @@ export default {
 
 <style lang="scss">
 @import url('./assets/scss/index.scss');
+
+html, body{
+  overflow-x: hidden;
+}
 </style>
