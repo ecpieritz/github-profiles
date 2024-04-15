@@ -17,7 +17,7 @@ export default {
 
 <style scoped lang="scss">
 .gp-person{
-  padding: 40px;
+  padding: 0 40px;
   text-align: center;
   &__img{
     width: 100%;
