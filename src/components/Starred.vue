@@ -1,9 +1,9 @@
 <template>
   <div class="gp-starred">
-    <Search />
+    <Search v-model="searchTerm" @search="filterStarredRepos" />
     <div class="gp-starred__itens">
       <RepoModule
-        v-for="repo in starredRepos"
+        v-for="repo in filteredStarredRepos"
         :key="repo.id"
         :title="repo.name"
         :description="repo.description"
@@ -28,7 +28,8 @@ export default {
   },
   data() {
     return {
-      starredRepos: []
+      starredRepos: [],
+      searchTerm: ''
     };
   },
   async created() {
@@ -37,6 +38,22 @@ export default {
       this.starredRepos = response;
     } catch (error) {
       console.error('Erro ao obter repositórios starred:', error);
+    }
+  },
+  computed: {
+    filteredStarredRepos() {
+      if (!this.searchTerm) {
+        return this.starredRepos;
+      } else {
+        return this.starredRepos.filter(repo =>
+          repo.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+        );
+      }
+    }
+  },
+  methods: {
+    filterStarredRepos(searchTerm) {
+      this.searchTerm = searchTerm;
     }
   }
 }

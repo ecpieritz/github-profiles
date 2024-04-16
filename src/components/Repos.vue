@@ -1,10 +1,10 @@
 <template>
   <div class="gp-repos">
-    <Search />
+    <Search v-model="searchTerm" @search="filterRepositories" />
     
     <div class="gp-repos__itens">
       <RepoModule
-        v-for="repo in repos"
+        v-for="repo in filteredRepos"
         :key="repo.id"
         :title="repo.name"
         :description="repo.description"
@@ -29,7 +29,8 @@ export default {
   },
   data() {
     return {
-      repos: []
+      repos: [],
+      searchTerm: ''
     };
   },
   async created() {
@@ -38,6 +39,22 @@ export default {
       this.repos = response;
     } catch (error) {
       console.error('Erro ao obter repositórios:', error);
+    }
+  },
+  computed: {
+    filteredRepos() {
+      if (!this.searchTerm) {
+        return this.repos;
+      } else {
+        return this.repos.filter(repo =>
+          repo.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+        );
+      }
+    }
+  },
+  methods: {
+    filterRepositories(searchTerm) {
+      this.searchTerm = searchTerm;
     }
   }
 }

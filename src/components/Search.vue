@@ -1,7 +1,7 @@
 <template>
   <div class="gp-search">
-      <span class="gp-search__icon input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="gp-search__input form-control" placeholder="Filter by name">
+    <span class="gp-search__icon input-group-text"><i class="bi bi-search"></i></span>
+    <input type="text" class="gp-search__input form-control" placeholder="Filter by name" @keyup.enter="searchRepositories">
   </div>
 </template>
 
@@ -9,6 +9,12 @@
 export default {
   name: 'SearchComp',
   props: {
+    value: String
+  },
+  methods: {
+    searchRepositories(event) {
+      this.$emit('search', event.target.value);
+    }
   }
 }
 </script>
