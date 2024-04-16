@@ -2,9 +2,8 @@
 
 ## 🖥 Preview
 <p align = "center">
-  <img src = "x" width = "700" height = "auto">
-  <img src = "x" width = "350" height = "auto">
-  <img src = "x" width = "350" height = "auto">
+  <img src = "https://raw.githubusercontent.com/ecpieritz/github-profiles/bd32b8b7428a2b8ee5c876ef80d2e1b31394df9c/public/gp-print__01.png" width = "700" height = "auto">
+  <img src = "https://raw.githubusercontent.com/ecpieritz/github-profiles/bd32b8b7428a2b8ee5c876ef80d2e1b31394df9c/public/gp-print__02.png" width = "700" height = "auto">
 </p>
 
 ## 📖 About
