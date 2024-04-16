@@ -4,18 +4,13 @@
     
     <div class="gp-repos__itens">
       <RepoModule
-        title="ecpieritz / shade-io"
-        description="SPA made for a digital services company. Created with Next.js"
-        stars="1,077"
-        forks="177"
-        link="https://github.com/ecpieritz/shade-io"
-      />
-      <RepoModule
-        title="ecpieritz / shade-io"
-        description="SPA made for a digital services company. Created with Next.js"
-        stars="1,077"
-        forks="177"
-        link="https://github.com/ecpieritz/shade-io"
+        v-for="repo in repos"
+        :key="repo.id"
+        :title="repo.name"
+        :description="repo.description"
+        :stars="repo.stargazers_count"
+        :forks="repo.forks_count"
+        :link="repo.html_url"
       />
     </div>
   </div>
@@ -24,11 +19,26 @@
 <script>
 import Search from './Search.vue'
 import RepoModule from './RepoModule.vue'
+import githubApi from '../api/githubApi'
+
 export default {
   name: 'ReposComp',
   components: {
     Search,
     RepoModule
+  },
+  data() {
+    return {
+      repos: []
+    };
+  },
+  async created() {
+    try {
+      const response = await githubApi.getUserRepos('ecpieritz');
+      this.repos = response;
+    } catch (error) {
+      console.error('Erro ao obter repositórios:', error);
+    }
   }
 }
 </script>

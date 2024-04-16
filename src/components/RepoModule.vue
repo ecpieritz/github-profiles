@@ -1,7 +1,7 @@
 <template>
   <div class="gp-repo-module">
     <div class="gp-repo-module__texts">
-      <a class="gp-repo-module__texts__title" href={link} target="_blank" rel="noopener noreferrer">{{title}}</a>
+      <a class="gp-repo-module__texts__title" :href="link" target="_blank" rel="noopener noreferrer">{{title}}</a>
       <p class="gp-repo-module__texts__description">{{description}}</p>
     </div>
 
@@ -23,12 +23,12 @@
 export default {
   name: 'RepoModule',
   props: {
-      title: String,
-      description: String,
-      stars: String,
-      forks: String,
-      link: String
-    }
+    title: String,
+    description: String,
+    stars: Number,
+    forks: Number,
+    link: String
+  }
 }
 </script>
 
@@ -46,23 +46,23 @@ export default {
 
   &__infos{
     display: flex;
-     gap: 30px;
-     margin-top: 30px;
+    gap: 30px;
+    margin-top: 30px;
 
-     &__part{
+    &__part{
       display: flex;
       align-items: center;
       margin-bottom: 30px;
-       p{
+      p{
         line-height: 1;
         margin: 0;
-       }
+      }
 
-       &__icon{
+      &__icon{
         height: 20px;
         margin-right: 5px;
-       }
-     }
+      }
+    }
   }
 
   &:last-of-type{

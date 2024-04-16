@@ -19,5 +19,20 @@ export default {
   getUserBio(username) {
     return instance.get(`/users/${username}`)
       .then(response => response.data.bio);
+  },
+
+  async getUserRepos(username) {
+    try {
+      const response = await instance.get(`/users/${username}/repos`);
+      return response.data;
+    } catch (error) {
+      console.error('Erro ao obter repositórios:', error);
+      throw error;
+    }
+  },
+
+  getUserStarredRepos(username) {
+    return instance.get(`/users/${username}/starred`)
+      .then(response => response.data);
   }
 };

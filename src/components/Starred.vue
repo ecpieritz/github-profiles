@@ -3,18 +3,13 @@
     <Search />
     <div class="gp-starred__itens">
       <RepoModule
-        title="ecpieritz / dreamhouse"
-        description="Multi-page website for an interior design brand. Made with next.js."
-        stars="998"
-        forks="25"
-        link="https://github.com/ecpieritz/dreamhouse"
-      />
-      <RepoModule
-        title="ecpieritz / dreamhouse"
-        description="Multi-page website for an interior design brand. Made with next.js."
-        stars="998"
-        forks="25"
-        link="https://github.com/ecpieritz/dreamhouse"
+        v-for="repo in starredRepos"
+        :key="repo.id"
+        :title="repo.name"
+        :description="repo.description"
+        :stars="repo.stargazers_count"
+        :forks="repo.forks_count"
+        :link="repo.html_url"
       />
     </div>
   </div>
@@ -23,11 +18,26 @@
 <script>
 import Search from './Search.vue'
 import RepoModule from './RepoModule.vue'
+import githubApi from '../api/githubApi'
+
 export default {
   name: 'StarredComp',
   components: {
     Search,
     RepoModule
+  },
+  data() {
+    return {
+      starredRepos: []
+    };
+  },
+  async created() {
+    try {
+      const response = await githubApi.getUserStarredRepos('ecpieritz');
+      this.starredRepos = response;
+    } catch (error) {
+      console.error('Erro ao obter repositórios starred:', error);
+    }
   }
 }
 </script>
