@@ -8,7 +8,7 @@
           @click.prevent="setActiveTab('repos')"
           :class="{ active: activeTab === 'repos' }"
         >
-          Repos <span>73</span>
+          Repos <span>{{ reposNumber }}</span>
         </a>
       </li>
       <li class="dp-git__nav__item nav-item">
@@ -18,7 +18,7 @@
           @click.prevent="setActiveTab('starred')"
           :class="{ active: activeTab === 'starred' }"
         >
-          Starred <span>5</span>
+          Starred <span>{{ starredNumber }}</span>
         </a>
       </li>
     </ul>
@@ -33,6 +33,8 @@
 <script>
 import Repos from './Repos.vue'
 import Starred from './Starred.vue'
+import githubApi from '../api/githubApi'
+
 export default {
   name: "GitCol",
   components: {
@@ -41,13 +43,28 @@ export default {
   },
   data() {
     return {
-      activeTab: 'repos' // Defina a aba inicialmente ativa
+      activeTab: 'repos', // Defina a aba inicialmente ativa
+      reposNumber: 0,
+      starredNumber: 0
     };
   },
   methods: {
     setActiveTab(tab) {
       this.activeTab = tab;
+    },
+    async fetchRepoStats() {
+      try {
+        const response = await githubApi.getUser('ecpieritz');
+        this.reposNumber = response.data.public_repos;
+        const starredResponse = await githubApi.getUserStarredRepos('ecpieritz');
+        this.starredNumber = starredResponse.length;
+      } catch (error) {
+        console.error('Error fetching repository stats:', error);
+      }
     }
+  },
+  mounted() {
+    this.fetchRepoStats();
   }
 };
 </script>
